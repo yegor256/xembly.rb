@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+#
+# Copyright (c) 2016 Yegor Bugayenko
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the 'Software'), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+STDOUT.sync = true
+
+require 'xembly'
+require 'slop'
+require 'xembly/version'
+
+opts = Slop.parse(ARGV, strict: true, help: true) do |o|
+  o.banner "Usage (#{Xembly::VERSION}): xembly [options]"
+  o.on '-v', '--verbose', 'Enable verbose mode'
+  o.on '--version', 'Show current version' do
+    puts Xembly::VERSION
+    exit
+  end
+  o.on(
+    '-d',
+    '--dirs',
+    'File path with Xembly directives (command line args by default)',
+    argument: :required
+  )
+  o.on(
+    '-x',
+    '--xml',
+    'File to read XML from (stdin by default)',
+    argument: :required
+  )
+  o.on(
+    '-f',
+    '--file',
+    'File to save XML into (stdout by default)',
+    argument: :required
+  )
+end
+
+fail '-f is mandatory when using -v' if opts.verbose? && !opts.file?
+
+if opts.help?
+  puts opts
+  exit
+end
+
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+output = Xembly::Base.new(opts).xml
+file = opts.file? ? File.new(opts[:file], 'w') : STDOUT
+file << output
