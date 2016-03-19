@@ -20,30 +20,29 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'minitest/autorun'
 require 'nokogiri'
-require 'xembly/xembler'
-require 'xembly/directives'
-require 'test__helper'
 
-# Xembly::Xembler module tests.
-# Author:: Yegor Bugayenko (yegor@teamed.io)
-# Copyright:: Copyright (c) 2016 Yegor Bugayenko
-# License:: MIT
-class TestXembler < XeTest
-  def test_modifies_xml
-    xembler = Xembly::Xembler.new(
-      Xembly::Directives.new(
-        'XPATH "/books"; ADD "book"; ADD "test"; UP; ADD "title"; SET "hi";'
-      )
-    )
-    matches(
-      xembler.apply('<books/>').to_xml,
-      [
-        '/*',
-        '/books[count(book)=1]',
-        '/books/book[test and title]'
-      ]
-    )
+module Xembly
+  # ADDIF directive
+  class AddIf
+    # Ctor.
+    # +name+:: Node name to add
+    def initialize(name)
+      @name = name
+    end
+
+    def exec(dom, cursor)
+      after = []
+      cursor.each do |node|
+        if !node.element_children.any? { |e| e.name == @name }
+          child = Nokogiri::XML::Node.new(@name, dom)
+          node.add_child(child)
+          after.push(child)
+        else
+          after.push(node)
+        end
+      end
+      after
+    end
   end
 end

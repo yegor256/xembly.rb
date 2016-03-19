@@ -20,29 +20,35 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'minitest/autorun'
-require 'nokogiri'
-require 'xembly/xembler'
-require 'xembly/directives'
+require 'xembly/addif'
 require 'test__helper'
 
-# Xembly::Xembler module tests.
+# Xembly::AddIf tests.
 # Author:: Yegor Bugayenko (yegor@teamed.io)
 # Copyright:: Copyright (c) 2016 Yegor Bugayenko
 # License:: MIT
-class TestXembler < XeTest
-  def test_modifies_xml
-    xembler = Xembly::Xembler.new(
-      Xembly::Directives.new(
-        'XPATH "/books"; ADD "book"; ADD "test"; UP; ADD "title"; SET "hi";'
-      )
-    )
+class TestAddIf < XeTest
+  def test_skips_nodes
+    dom = Nokogiri::XML('<books><book/></books>')
+    Xembly::AddIf.new('book').exec(dom, [dom.xpath('/*').first])
     matches(
-      xembler.apply('<books/>').to_xml,
+      dom.to_xml,
       [
-        '/*',
+        '/books',
+        '/books[count(book)=1]'
+      ]
+    )
+  end
+
+  def test_adds_nodes
+    dom = Nokogiri::XML('<books><book/></books>')
+    Xembly::AddIf.new('book-2').exec(dom, [dom.xpath('/*').first])
+    matches(
+      dom.to_xml,
+      [
+        '/books',
         '/books[count(book)=1]',
-        '/books/book[test and title]'
+        '/books[count(book-2)=1]'
       ]
     )
   end

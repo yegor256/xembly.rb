@@ -20,30 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'minitest/autorun'
 require 'nokogiri'
-require 'xembly/xembler'
-require 'xembly/directives'
-require 'test__helper'
 
-# Xembly::Xembler module tests.
-# Author:: Yegor Bugayenko (yegor@teamed.io)
-# Copyright:: Copyright (c) 2016 Yegor Bugayenko
-# License:: MIT
-class TestXembler < XeTest
-  def test_modifies_xml
-    xembler = Xembly::Xembler.new(
-      Xembly::Directives.new(
-        'XPATH "/books"; ADD "book"; ADD "test"; UP; ADD "title"; SET "hi";'
-      )
-    )
-    matches(
-      xembler.apply('<books/>').to_xml,
-      [
-        '/*',
-        '/books[count(book)=1]',
-        '/books/book[test and title]'
-      ]
-    )
+module Xembly
+  # UP directive
+  class Up
+    def exec(_, cursor)
+      after = []
+      cursor.each do |node|
+        after.push(node.parent)
+      end
+      after
+    end
   end
 end

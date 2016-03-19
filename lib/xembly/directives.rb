@@ -21,7 +21,9 @@
 # SOFTWARE.
 
 require 'xembly/add'
+require 'xembly/addif'
 require 'xembly/attr'
+require 'xembly/up'
 require 'xembly/xpath'
 require 'xembly/set'
 
@@ -48,7 +50,7 @@ module Xembly
 
     def self.map(text)
       cmd, tail = text.strip.split(/\s+/, 2)
-      args = tail.strip
+      args = (tail.nil? ? '' : tail).strip
         .scan(/"([^"]+)"/)
         .flatten
         .map { |a| a.tr('"', '') }
