@@ -61,18 +61,6 @@ class TestXembly < XeTest
     end
   end
 
-  def test_reading_from_stdin
-    opts = opts(['ADD "books";'])
-    matches(
-      Xembly::Base.new(opts).xml,
-      [
-        '/books',
-        '/books[count(book)=1]',
-        '/books/book[@id=123]',
-      ]
-    )
-  end
-
   private
 
   def opts(args)

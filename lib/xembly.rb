@@ -75,7 +75,7 @@ module Xembly
         Xembly.log.info "#{@opts.arguments.length} directives in command line"
         dirs = @opts.arguments.join(';')
       end
-      Xembler.new(Directives.new(dirs)).apply(file).to_xml
+      Xembler.new(Directives.new(dirs)).apply(xml).to_xml
     end
   end
 end
