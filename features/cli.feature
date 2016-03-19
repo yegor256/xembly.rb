@@ -32,6 +32,7 @@ Feature: Command Line Processing
     SET "yegor";
     UP; UP;
     XPATH "garbage";
+    STRICT "1";
     REMOVE;
     """
     When I run bin/xembly with "-v -d dirs.txt -f out.xml -x text.xml"

@@ -20,62 +20,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'xembly/add'
-require 'xembly/addif'
-require 'xembly/attr'
-require 'xembly/remove'
-require 'xembly/set'
-require 'xembly/strict'
-require 'xembly/up'
-require 'xembly/xpath'
+require 'nokogiri'
 
 module Xembly
-  # Directives
-  class Directives
+  # STRICT directive
+  class Strict
     # Ctor.
-    # +text+:: Directives in text
-    def initialize(text)
-      @array = text
-        .strip
-        .split(/\s*;\s*/)
-        .reject(&:empty?)
-        .map { |t| Directives.map(t) }
+    # +count+:: How many nodes to expect
+    def initialize(count)
+      @count = count.to_i
     end
 
-    def each(&block)
-      @array.each(&block)
-    end
-
-    def length
-      @array.length
-    end
-
-    def self.map(text)
-      cmd, tail = text.strip.split(/\s+/, 2)
-      args = (tail.nil? ? '' : tail).strip
-        .scan(/"([^"]+)"/)
-        .flatten
-        .map { |a| a.tr('"', '') }
-      case cmd.upcase
-      when 'ADD'
-        Add.new(args[0])
-      when 'ADDIF'
-        AddIf.new(args[0])
-      when 'ATTR'
-        Attr.new(args[0], args[1])
-      when 'REMOVE'
-        Remove.new
-      when 'SET'
-        Set.new(args[0])
-      when 'STRICT'
-        Strict.new(args[0])
-      when 'UP'
-        Up.new
-      when 'XPATH'
-        Xpath.new(args[0])
-      else
-        fail "Unknown command \"#{cmd}\""
-      end
+    def exec(_, cursor)
+      fail "there are #{cursor.length} nodes, while #{@count} expected" unless \
+        cursor.length == @count
+      cursor
     end
   end
 end
