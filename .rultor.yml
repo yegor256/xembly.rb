@@ -16,8 +16,8 @@ release:
     chmod 0600 ../rubygems.yml
     gem push *.gem --config-file ../rubygems.yml
     sudo gem install xembly
-    pdd --source=$(pwd) --verbose --file=xembly.xml -e=test/** -e=features/** -e=README.md
-    s3cmd --no-progress put xembly.xml --config=../s3cfg s3://pdd.teamed.io/xembly.xml
+    pdd --source=$(pwd) --verbose --file=xembly-gem.xml -e=test/** -e=features/** -e=README.md
+    s3cmd --no-progress put xembly-gem.xml --config=../s3cfg s3://pdd.teamed.io/xembly-gem.xml
   commanders:
   - yegor256
 architect:
