@@ -23,11 +23,14 @@ Feature: Command Line Processing
     """
     XPATH "/books";
     ADD "book";
+    ATTR "isbn", "1519166915";
+    SET "Elegant Objects";
     """
     When I run bin/xembly with "-v -d dirs.txt -f out.xml -x text.xml"
     Then Exit code is zero
     And Stdout contains "reading text.xml"
     And XML file "out.xml" matches "/books[count(book) = 3]"
+    And XML file "out.xml" matches "/books/book[@isbn='1519166915' and .='Elegant Objects']"
 
   Scenario: Rejects unknown options
     When I run bin/xembly with "--some-unknown-option"

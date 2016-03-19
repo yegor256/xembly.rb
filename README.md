@@ -36,7 +36,7 @@ in file `doc.xml`:
 ```xml
 <books>
   <book isbn="0735619654">Object Thinking</book>
-  <book isbn="1519166915">Elegan Objects</book>
+  <book isbn="1519166915">Elegant Objects</book>
 </books>
 ```
 
@@ -46,7 +46,7 @@ Now, say, you want to add one more book there:
 $ xembly --xml doc.xml 'XPATH "/books"; ADD "book"; ATTR "isbn", "0201379430"; SET "Object Design";'
 <books>
   <book isbn="0735619654">Object Thinking</book>
-  <book isbn="1519166915">Elegan Objects</book>
+  <book isbn="1519166915">Elegant Objects</book>
   <book isbn="0201379430">Object Design</book>
 </books>
 ```

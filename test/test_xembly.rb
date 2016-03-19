@@ -48,14 +48,18 @@ class TestXembly < XeTest
       xml = File.join(dir, 'input.xml')
       File.write(xml, '<books/>')
       dirs = File.join(dir, 'dirs.txt')
-      File.write(dirs, 'XPATH "/books"; ADD "book"; ATTR "id", "123";')
+      File.write(
+        dirs,
+        'XPATH "/books"; ADD "book"; ATTR "id", "123"; SET "Elegant Objects";'
+      )
       opts = opts(['--xml', xml, '--dirs', dirs])
       matches(
         Xembly::Base.new(opts).xml,
         [
           '/books',
           '/books[count(book)=1]',
-          '/books/book[@id=123]'
+          '/books/book[@id=123]',
+          '/books/book[@id=123 and .="Elegant Objects"]'
         ]
       )
     end

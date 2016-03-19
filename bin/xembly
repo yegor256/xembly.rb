@@ -28,7 +28,7 @@ require 'slop'
 require 'xembly/version'
 
 opts = Slop.parse(ARGV, strict: true, help: true) do |o|
-  o.banner = "Usage (#{Xembly::VERSION}): xembly [options]"
+  o.banner = "Usage (#{Xembly::VERSION}): xembly [options] [directives]"
   o.on '-h', '--help', 'Print help' do
     puts o
     exit

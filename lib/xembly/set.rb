@@ -20,58 +20,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'xembly/add'
-require 'xembly/attr'
-require 'xembly/xpath'
-require 'xembly/set'
+require 'nokogiri'
 
 module Xembly
-  # Directives
-  class Directives
+  # SET directive
+  class Set
     # Ctor.
-    # +text+:: Directives in text
-    def initialize(text)
-      @array = text
-        .strip
-        .split(/\s*;\s*/)
-        .reject(&:empty?)
-        .map { |t| Directives.map(t) }
+    # +value+:: Text value to set
+    def initialize(value)
+      @value = value
     end
 
-    def each(&block)
-      @array.each(&block)
-    end
-
-    def length
-      @array.length
-    end
-
-    def self.map(text)
-      cmd, tail = text.strip.split(/\s+/, 2)
-      args = tail.strip
-        .scan(/"([^"]+)"/)
-        .flatten
-        .map { |a| a.tr('"', '') }
-      case cmd.upcase
-      when 'ADD'
-        Add.new(args[0])
-      when 'ADDIF'
-        AddIf.new(args[0])
-      when 'ATTR'
-        Attr.new(args[0], args[1])
-      when 'REMOVE'
-        Remove.new
-      when 'SET'
-        Set.new(args[0])
-      when 'STRICT'
-        Strict.new(args[0])
-      when 'UP'
-        Up.new
-      when 'XPATH'
-        Xpath.new(args[0])
-      else
-        fail "Unknown command \"#{cmd}\""
+    def exec(_, cursor)
+      cursor.each do |node|
+        node.content = @value
       end
+      cursor
     end
   end
 end
