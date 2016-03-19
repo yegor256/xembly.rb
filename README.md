@@ -16,7 +16,7 @@ and check this project: [yegor256/xembly](https://github.com/yegor256/xembly)
 
 ## How to Install?
 
-You will need Ruby 2.0+ and Gem 2.2+:
+You will need Ruby 2.0+:
 
 ```bash
 $ gem install xembly
