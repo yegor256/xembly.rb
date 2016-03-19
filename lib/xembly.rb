@@ -62,20 +62,20 @@ module Xembly
     # Generate XML.
     def xml
       if @opts.xml?
-        file = File.new(@opts[:xml], 'r')
-        Xembly.log.info "reading #{file.path}"
+        xml = File.read(@opts[:xml])
+        Xembly.log.info "reading #{@opts[:xml]}"
       else
-        file = STDIN
+        xml = STDIN.read
         Xembly.log.info 'reading STDIN'
       end
       if @opts.dirs?
         Xembly.log.info "reading directives from #{@opts[:dirs]}"
         dirs = File.read(@opts[:dirs])
       else
-        Xembly.log.info 'reading directives from command line'
-        dirs = ''
+        Xembly.log.info "#{@opts.arguments.length} directives in command line"
+        dirs = @opts.arguments.join(';')
       end
-      Xembler.new(Directives.new(dirs)).apply(File.read(file))
+      Xembler.new(Directives.new(dirs)).apply(file).to_xml
     end
   end
 end

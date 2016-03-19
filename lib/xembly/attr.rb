@@ -20,49 +20,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'xembly/add'
-require 'xembly/attr'
-require 'xembly/xpath'
-
 module Xembly
-  # Directives
-  class Directives
+  # ATTR directive
+  class Attr
     # Ctor.
-    # +text+:: Directives in text
-    def initialize(text)
-      @array = text
-        .strip
-        .split(/\s*;\s*/)
-        .reject(&:empty?)
-        .map { |t| Directives::map(t) }
+    # +name+:: Attribute name
+    # +val+:: Attribute value
+    def initialize(name, value)
+      @name = name
+      @value = value
     end
 
-    def each(&block)
-      @array.each(&block)
+    def exec(dom, cursor)
+      cursor.each { |node|
+        node[@name] = @value
+      }
+      cursor
     end
-
-    def length
-      @array.length
-    end
-
-    private
-
-    def self.map(text)
-      cmd, tail = text.strip.split(/\s+/, 2)
-      args = tail.strip
-        .split(/"\s*,\s*"|'\s*,\s*'/)
-        .map { |a| a.tr('\'"', '') }
-      case cmd.upcase
-        when 'ADD'
-          Add.new(args[0])
-        when 'ATTR'
-          Attr.new(args[0], args[1])
-        when 'XPATH'
-          Xpath.new(args[0])
-        else
-          raise "Unknown command \"#{cmd}\""
-      end
-    end
-
   end
 end

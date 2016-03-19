@@ -21,48 +21,34 @@
 # SOFTWARE.
 
 require 'xembly/add'
-require 'xembly/attr'
-require 'xembly/xpath'
+require 'test__helper'
 
-module Xembly
-  # Directives
-  class Directives
-    # Ctor.
-    # +text+:: Directives in text
-    def initialize(text)
-      @array = text
-        .strip
-        .split(/\s*;\s*/)
-        .reject(&:empty?)
-        .map { |t| Directives::map(t) }
-    end
-
-    def each(&block)
-      @array.each(&block)
-    end
-
-    def length
-      @array.length
-    end
-
-    private
-
-    def self.map(text)
-      cmd, tail = text.strip.split(/\s+/, 2)
-      args = tail.strip
-        .split(/"\s*,\s*"|'\s*,\s*'/)
-        .map { |a| a.tr('\'"', '') }
-      case cmd.upcase
-        when 'ADD'
-          Add.new(args[0])
-        when 'ATTR'
-          Attr.new(args[0], args[1])
-        when 'XPATH'
-          Xpath.new(args[0])
-        else
-          raise "Unknown command \"#{cmd}\""
-      end
-    end
-
+# Xembly::Add tests.
+# Author:: Yegor Bugayenko (yegor@teamed.io)
+# Copyright:: Copyright (c) 2016 Yegor Bugayenko
+# License:: MIT
+class TestAdd < XeTest
+  def test_adds_nodes
+    dom = Nokogiri::XML('<books/>')
+    Xembly::Add.new('book').exec(dom, [dom.xpath('/*').first])
+    matches(
+      dom.to_xml,
+      [
+        '/books',
+        '/books[count(book)=1]',
+      ]
+    )
   end
+
+  def test_adds_nodes_to_empty_dom
+    dom = Nokogiri::XML('')
+    Xembly::Add.new('dude').exec(dom, [dom])
+    matches(
+      dom.to_xml,
+      [
+        '/dude',
+      ]
+    )
+  end
+
 end

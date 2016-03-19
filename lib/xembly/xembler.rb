@@ -20,6 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+require 'xembly'
+
 module Xembly
   # Xembler
   class Xembler
@@ -31,8 +33,13 @@ module Xembly
 
     # Apply them to the XML.
     def apply(xml)
+      dom = Nokogiri::XML(xml)
+      cursor = [dom]
+      @dirs.each { |dir|
+        cursor = dir.exec(dom, cursor)
+      }
       Xembly.log.info "#{@dirs.length} directive(s) applied"
-      '<xml/>'
+      dom
     end
   end
 end

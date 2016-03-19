@@ -25,22 +25,52 @@ require 'nokogiri'
 require 'xembly'
 require 'tmpdir'
 require 'slop'
+require 'test__helper'
 
 # Xembly main module test.
 # Author:: Yegor Bugayenko (yegor@teamed.io)
 # Copyright:: Copyright (c) 2016 Yegor Bugayenko
 # License:: MIT
-class TestXembly < Minitest::Test
+class TestXembly < XeTest
   def test_basic
+    opts = opts(['-x', '/dev/null', 'ADD "books"', 'ADD "book"'])
+    matches(
+      Xembly::Base.new(opts).xml,
+      [
+        '/books',
+        '/books[count(book)=1]',
+      ]
+    )
+  end
+
+  def test_reading_from_file
     Dir.mktmpdir 'test' do |dir|
-      opts = opts(['-v', '-x', '/dev/null', 'ADD "books"', 'ADD "book"'])
+      xml = File.join(dir, 'input.xml')
+      File.write(xml, '<books/>')
+      dirs = File.join(dir, 'dirs.txt')
+      File.write(dirs, 'XPATH "/books"; ADD "book"; ATTR "id", "123";')
+      opts = opts(['--xml', xml, '--dirs', dirs])
       matches(
-        Nokogiri::XML(Xembly::Base.new(opts).xml),
+        Xembly::Base.new(opts).xml,
         [
+          '/books',
           '/books[count(book)=1]',
+          '/books/book[@id=123]',
         ]
       )
     end
+  end
+
+  def test_reading_from_stdin
+    opts = opts(['ADD "books";'])
+    matches(
+      Xembly::Base.new(opts).xml,
+      [
+        '/books',
+        '/books[count(book)=1]',
+        '/books/book[@id=123]',
+      ]
+    )
   end
 
   private
@@ -49,12 +79,7 @@ class TestXembly < Minitest::Test
     Slop.parse args do |o|
       o.on '-v', '--verbose'
       o.string '-x', '--xml', argument: :required
-    end
-  end
-
-  def matches(xml, xpaths)
-    xpaths.each do |xpath|
-      fail "doesn't match '#{xpath}': #{xml}" unless xml.xpath(xpath).size == 1
+      o.string '-d', '--dirs', argument: :required
     end
   end
 end

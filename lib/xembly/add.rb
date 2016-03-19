@@ -20,49 +20,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'xembly/add'
-require 'xembly/attr'
-require 'xembly/xpath'
+require 'nokogiri'
 
 module Xembly
-  # Directives
-  class Directives
+  # ADD directive
+  class Add
     # Ctor.
-    # +text+:: Directives in text
-    def initialize(text)
-      @array = text
-        .strip
-        .split(/\s*;\s*/)
-        .reject(&:empty?)
-        .map { |t| Directives::map(t) }
+    # +name+:: Node name to add
+    def initialize(name)
+      @name = name
     end
 
-    def each(&block)
-      @array.each(&block)
+    def exec(dom, cursor)
+      after = []
+      cursor.each { |node|
+        child = Nokogiri::XML::Node.new(@name, dom)
+        node.add_child(child)
+        after.push(child)
+      }
+      after
     end
-
-    def length
-      @array.length
-    end
-
-    private
-
-    def self.map(text)
-      cmd, tail = text.strip.split(/\s+/, 2)
-      args = tail.strip
-        .split(/"\s*,\s*"|'\s*,\s*'/)
-        .map { |a| a.tr('\'"', '') }
-      case cmd.upcase
-        when 'ADD'
-          Add.new(args[0])
-        when 'ATTR'
-          Attr.new(args[0], args[1])
-        when 'XPATH'
-          Xpath.new(args[0])
-        else
-          raise "Unknown command \"#{cmd}\""
-      end
-    end
-
   end
 end

@@ -24,15 +24,23 @@ require 'minitest/autorun'
 require 'nokogiri'
 require 'xembly/xembler'
 require 'xembly/directives'
+require 'test__helper'
 
 # Xembly::Xembler module tests.
 # Author:: Yegor Bugayenko (yegor@teamed.io)
 # Copyright:: Copyright (c) 2016 Yegor Bugayenko
 # License:: MIT
-class TestXembler < Minitest::Test
-  def test_min_words
+class TestXembler < XeTest
+  def test_modifies_xml
     xembler = Xembly::Xembler.new(
-      Xembly::Directives.new('ADD "test";')
+      Xembly::Directives.new('XPATH "/books"; ADD "book"; ADD "test";')
+    )
+    matches(
+      xembler.apply('<books/>').to_xml,
+      [
+        '/*',
+        '/books[count(book)=1]',
+      ]
     )
   end
 end
