@@ -48,8 +48,9 @@ module Xembly
     def self.map(text)
       cmd, tail = text.strip.split(/\s+/, 2)
       args = tail.strip
-        .split(/"\s*,\s*"|'\s*,\s*'/)
-        .map { |a| a.tr('\'"', '') }
+        .scan(/"([^"]+)"/)
+        .flatten
+        .map { |a| a.tr('"', '') }
       case cmd.upcase
       when 'ADD'
         Add.new(args[0])
