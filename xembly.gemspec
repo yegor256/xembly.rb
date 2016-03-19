@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ['README.md', 'LICENSE.txt']
   s.add_runtime_dependency 'nokogiri', '1.6.7.2'
   s.add_runtime_dependency 'slop', '4.3.0'
-  s.add_runtime_dependency 'rake', '10.5.0'
+  s.add_runtime_dependency 'rake', '11.1.1'
   s.add_development_dependency 'coveralls', '0.7.2'
   s.add_development_dependency 'rdoc', '4.2.0'
   s.add_development_dependency 'cucumber', '1.3.17'
