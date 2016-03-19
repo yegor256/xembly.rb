@@ -31,7 +31,7 @@ module Xembly
       @path = path
     end
 
-    def exec(dom, cursor)
+    def exec(dom, _)
       dom.xpath(@path)
     end
   end

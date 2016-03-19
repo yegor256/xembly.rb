@@ -31,10 +31,10 @@ module Xembly
       @value = value
     end
 
-    def exec(dom, cursor)
-      cursor.each { |node|
+    def exec(_, cursor)
+      cursor.each do |node|
         node[@name] = @value
-      }
+      end
       cursor
     end
   end

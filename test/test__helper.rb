@@ -25,6 +25,10 @@ require 'nokogiri'
 require 'xembly'
 require 'minitest/autorun'
 
+# Xembly test, parent class.
+# Author:: Yegor Bugayenko (yegor@teamed.io)
+# Copyright:: Copyright (c) 2016 Yegor Bugayenko
+# License:: MIT
 class XeTest < Minitest::Test
   def matches(xml, xpaths)
     xpaths.each do |xpath|

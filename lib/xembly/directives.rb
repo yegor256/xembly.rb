@@ -34,7 +34,7 @@ module Xembly
         .strip
         .split(/\s*;\s*/)
         .reject(&:empty?)
-        .map { |t| Directives::map(t) }
+        .map { |t| Directives.map(t) }
     end
 
     def each(&block)
@@ -45,24 +45,21 @@ module Xembly
       @array.length
     end
 
-    private
-
     def self.map(text)
       cmd, tail = text.strip.split(/\s+/, 2)
       args = tail.strip
         .split(/"\s*,\s*"|'\s*,\s*'/)
         .map { |a| a.tr('\'"', '') }
       case cmd.upcase
-        when 'ADD'
-          Add.new(args[0])
-        when 'ATTR'
-          Attr.new(args[0], args[1])
-        when 'XPATH'
-          Xpath.new(args[0])
-        else
-          raise "Unknown command \"#{cmd}\""
+      when 'ADD'
+        Add.new(args[0])
+      when 'ATTR'
+        Attr.new(args[0], args[1])
+      when 'XPATH'
+        Xpath.new(args[0])
+      else
+        fail "Unknown command \"#{cmd}\""
       end
     end
-
   end
 end

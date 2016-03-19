@@ -35,9 +35,9 @@ module Xembly
     def apply(xml)
       dom = Nokogiri::XML(xml)
       cursor = [dom]
-      @dirs.each { |dir|
+      @dirs.each do |dir|
         cursor = dir.exec(dom, cursor)
-      }
+      end
       Xembly.log.info "#{@dirs.length} directive(s) applied"
       dom
     end

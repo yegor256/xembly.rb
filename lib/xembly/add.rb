@@ -33,11 +33,11 @@ module Xembly
 
     def exec(dom, cursor)
       after = []
-      cursor.each { |node|
+      cursor.each do |node|
         child = Nokogiri::XML::Node.new(@name, dom)
         node.add_child(child)
         after.push(child)
-      }
+      end
       after
     end
   end

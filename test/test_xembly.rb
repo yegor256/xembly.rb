@@ -38,7 +38,7 @@ class TestXembly < XeTest
       Xembly::Base.new(opts).xml,
       [
         '/books',
-        '/books[count(book)=1]',
+        '/books[count(book)=1]'
       ]
     )
   end
@@ -55,7 +55,7 @@ class TestXembly < XeTest
         [
           '/books',
           '/books[count(book)=1]',
-          '/books/book[@id=123]',
+          '/books/book[@id=123]'
         ]
       )
     end

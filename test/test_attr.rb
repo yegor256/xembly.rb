@@ -34,9 +34,8 @@ class TestAttr < XeTest
     matches(
       dom.to_xml,
       [
-        '/book[@id=4]',
+        '/book[@id=4]'
       ]
     )
   end
-
 end

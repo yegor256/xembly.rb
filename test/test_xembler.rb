@@ -39,7 +39,7 @@ class TestXembler < XeTest
       xembler.apply('<books/>').to_xml,
       [
         '/*',
-        '/books[count(book)=1]',
+        '/books[count(book)=1]'
       ]
     )
   end

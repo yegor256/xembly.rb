@@ -35,7 +35,7 @@ class TestAdd < XeTest
       dom.to_xml,
       [
         '/books',
-        '/books[count(book)=1]',
+        '/books[count(book)=1]'
       ]
     )
   end
@@ -46,9 +46,8 @@ class TestAdd < XeTest
     matches(
       dom.to_xml,
       [
-        '/dude',
+        '/dude'
       ]
     )
   end
-
 end
