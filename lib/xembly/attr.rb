@@ -20,6 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+require 'xembly'
+
 module Xembly
   # ATTR directive
   class Attr
@@ -34,6 +36,7 @@ module Xembly
     def exec(_, cursor)
       cursor.each do |node|
         node[@name] = @value
+        Xembly.log.info "attribute \"#{@name}\" set for node \"#{node.name}\""
       end
       cursor
     end

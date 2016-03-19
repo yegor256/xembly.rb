@@ -24,8 +24,8 @@
 STDOUT.sync = true
 
 require 'xembly'
-require 'slop'
 require 'xembly/version'
+require 'slop'
 
 opts = Slop.parse(ARGV, strict: true, help: true) do |o|
   o.banner = "Usage (#{Xembly::VERSION}): xembly [options] [directives]"

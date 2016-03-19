@@ -20,6 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+require 'xembly'
 require 'nokogiri'
 
 module Xembly
@@ -37,6 +38,7 @@ module Xembly
         child = Nokogiri::XML::Node.new(@name, dom)
         node.add_child(child)
         after.push(child)
+        Xembly.log.info "node \"#{@name}\" added to \"#{node.name}\""
       end
       after
     end

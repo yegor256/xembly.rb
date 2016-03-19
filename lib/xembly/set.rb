@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'nokogiri'
+require 'xembly'
 
 module Xembly
   # SET directive
@@ -34,6 +34,7 @@ module Xembly
     def exec(_, cursor)
       cursor.each do |node|
         node.content = @value
+        Xembly.log.info "node \"#{node.name}\" text content set"
       end
       cursor
     end

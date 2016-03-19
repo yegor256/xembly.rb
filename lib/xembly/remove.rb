@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'nokogiri'
+require 'xembly'
 
 module Xembly
   # REMOVE directive
@@ -28,6 +28,7 @@ module Xembly
     def exec(_, cursor)
       after = []
       cursor.each do |node|
+        Xembly.log.info "node \"#{node.name}\" removed"
         node.remove
         after.push(node.parent)
       end
