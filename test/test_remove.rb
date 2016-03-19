@@ -20,23 +20,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'nokogiri'
+require 'xembly/remove'
+require 'test__helper'
 
-module Xembly
-  # XPATH directive
-  class Xpath
-    # Ctor.
-    # +path+:: Path
-    def initialize(path)
-      @path = path
-    end
-
-    def exec(_, cursor)
-      after = []
-      cursor.each do |node|
-        node.xpath(@path).each { |n| after.push(n) }
-      end
-      after
-    end
+# Xembly::Remove tests.
+# Author:: Yegor Bugayenko (yegor@teamed.io)
+# Copyright:: Copyright (c) 2016 Yegor Bugayenko
+# License:: MIT
+class TestRemove < XeTest
+  def test_adds_nodes
+    dom = Nokogiri::XML('<books><book id="1"/><book id="2"/></books>')
+    Xembly::Remove.new.exec(dom, [dom.xpath('/books/book[@id=1]').first])
+    matches(
+      dom.to_xml,
+      [
+        '/books',
+        '/books[count(book)=1]'
+      ]
+    )
   end
 end

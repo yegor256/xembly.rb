@@ -23,9 +23,10 @@
 require 'xembly/add'
 require 'xembly/addif'
 require 'xembly/attr'
+require 'xembly/remove'
+require 'xembly/set'
 require 'xembly/up'
 require 'xembly/xpath'
-require 'xembly/set'
 
 module Xembly
   # Directives

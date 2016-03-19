@@ -23,18 +23,13 @@
 require 'nokogiri'
 
 module Xembly
-  # XPATH directive
-  class Xpath
-    # Ctor.
-    # +path+:: Path
-    def initialize(path)
-      @path = path
-    end
-
+  # REMOVE directive
+  class Remove
     def exec(_, cursor)
       after = []
       cursor.each do |node|
-        node.xpath(@path).each { |n| after.push(n) }
+        node.remove
+        after.push(node.parent)
       end
       after
     end
