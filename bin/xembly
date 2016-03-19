@@ -28,25 +28,29 @@ require 'slop'
 require 'xembly/version'
 
 opts = Slop.parse(ARGV, strict: true, help: true) do |o|
-  o.banner "Usage (#{Xembly::VERSION}): xembly [options]"
+  o.banner = "Usage (#{Xembly::VERSION}): xembly [options]"
+  o.on '-h', '--help', 'Print help' do
+    puts o
+    exit
+  end
   o.on '-v', '--verbose', 'Enable verbose mode'
   o.on '--version', 'Show current version' do
     puts Xembly::VERSION
     exit
   end
-  o.on(
+  o.string(
     '-d',
     '--dirs',
     'File path with Xembly directives (command line args by default)',
     argument: :required
   )
-  o.on(
+  o.string(
     '-x',
     '--xml',
     'File to read XML from (stdin by default)',
     argument: :required
   )
-  o.on(
+  o.string(
     '-f',
     '--file',
     'File to save XML into (stdout by default)',
@@ -55,11 +59,6 @@ opts = Slop.parse(ARGV, strict: true, help: true) do |o|
 end
 
 fail '-f is mandatory when using -v' if opts.verbose? && !opts.file?
-
-if opts.help?
-  puts opts
-  exit
-end
 
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8

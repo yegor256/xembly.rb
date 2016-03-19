@@ -32,10 +32,6 @@ Before do
   @dir = Dir.mktmpdir('test')
   FileUtils.mkdir_p(@dir) unless File.exist?(@dir)
   Dir.chdir(@dir)
-  @opts = Slop.parse ['-v', '-s', @dir] do
-    on 'v', 'verbose'
-    on 's', 'source', argument: :required
-  end
 end
 
 After do
@@ -50,24 +46,8 @@ Given(/^I have a "([^"]*)" file with content:$/) do |file, text|
   end
 end
 
-When(/^I run xembly$/) do
-  @xml = Nokogiri::XML.parse(Xembly::Base.new(@opts).xml)
-end
-
 Then(/^XML matches "([^"]+)"$/) do |xpath|
   fail "XML doesn't match \"#{xpath}\":\n#{@xml}" if @xml.xpath(xpath).empty?
-end
-
-When(/^I run xembly it fails with "([^"]*)"$/) do |txt|
-  begin
-    Xembly::Base.new(@opts).xml
-    passed = true
-  rescue Xembly::Error => ex
-    unless ex.message.include?(txt)
-      raise "Xembly failed but exception doesn't contain \"#{txt}\": #{ex.message}"
-    end
-  end
-  fail "Xembly didn't fail" if passed
 end
 
 When(/^I run bin\/xembly with "([^"]*)"$/) do |arg|
