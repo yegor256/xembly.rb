@@ -25,5 +25,5 @@
 # Copyright:: Copyright (c) 2016 Yegor Bugayenko
 # License:: MIT
 module Xembly
-  VERSION = '1.0.snapshot'
+  VERSION = '0.4'
 end
