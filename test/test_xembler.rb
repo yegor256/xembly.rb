@@ -37,7 +37,8 @@ class TestXembler < XeTest
         'XPATH "/books"; ADD "book"; ADD "test"; UP;' \
         'ADD "title"; SET "hi;you";' \
         'XPATH "none"; XPATH "/none-again";' \
-        'XPATH "/books"; ATTR "amp", "test";'
+        'XPATH "/books"; ATTR "amp", "test";' \
+        'ADD "temp"; ADD "t1"; UP; XPATH "t1"; REMOVE; ADD "t2";'
       )
     )
     matches(

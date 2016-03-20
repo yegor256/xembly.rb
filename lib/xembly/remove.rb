@@ -29,8 +29,9 @@ module Xembly
       after = []
       cursor.each do |node|
         Xembly.log.info "node \"#{node.name}\" removed"
+        parent = node.parent
         node.remove
-        after.push(node.parent)
+        after.push(parent)
       end
       after
     end
