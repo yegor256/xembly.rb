@@ -66,11 +66,11 @@ Then(/^Stdout is empty$/) do
   fail "STDOUT is not empty:\n#{@stdout}" unless @stdout == ''
 end
 
-Then(/^XML file "([^"]+)" matches "([^"]+)"$/) do |file, xpath|
+Then(/^XML file "([^"]+)" matches "((?:[^"]|\\")+)"$/) do |file, xpath|
   fail "File #{file} doesn't exit" unless File.exist?(file)
   xml = Nokogiri::XML.parse(File.read(file))
   xml.remove_namespaces!
-  if xml.xpath(xpath).empty?
+  if xml.xpath(xpath.gsub(/\\"/, '"')).empty?
     fail "XML file #{file} doesn't match \"#{xpath}\":\n#{xml}"
   end
 end

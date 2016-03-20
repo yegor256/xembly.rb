@@ -25,7 +25,7 @@ Feature: Command Line Processing
     XPATH "/books";
     ADD "book";
     ATTR "isbn", "1519166915";
-    SET "Elegant Objects; The Book";
+    SET "&quot;Elegant Objects; The Book&quot;";
     UP;
     ADD "author";
     ADDIF "name";
@@ -40,7 +40,7 @@ Feature: Command Line Processing
     And Stdout contains "reading text.xml"
     And XML file "out.xml" matches "/books[count(book) = 3]"
     And XML file "out.xml" matches "/books/book[@isbn='1519166915']"
-    And XML file "out.xml" matches "/books/book[.='Elegant Objects; The Book']"
+    And XML file "out.xml" matches "/books/book[.='\"Elegant Objects; The Book\"']"
     And XML file "out.xml" matches "/books[author='yegor']"
     And XML file "out.xml" matches "/books[not(garbage)]"
 
