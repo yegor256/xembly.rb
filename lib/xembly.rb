@@ -73,7 +73,7 @@ module Xembly
         dirs = File.read(@opts[:dirs])
       else
         Xembly.log.info "#{@opts.arguments.length} directives in command line"
-        dirs = @opts.arguments.join(';')
+        dirs = @opts.arguments.join('')
       end
       Xembler.new(Directives.new(dirs)).apply(xml).to_xml
     end

@@ -33,7 +33,7 @@ require 'test__helper'
 # License:: MIT
 class TestXembly < XeTest
   def test_basic
-    opts = opts(['-x', '/dev/null', 'ADD "books"', 'ADD "book"'])
+    opts = opts(['-x', '/dev/null', 'ADD "books";', 'ADD "book";'])
     matches(
       Xembly::Base.new(opts).xml,
       [

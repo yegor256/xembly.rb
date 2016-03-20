@@ -37,8 +37,8 @@ module Xembly
     def initialize(text)
       @array = text
         .strip
-        .split(/\s*;\s*/)
-        .reject(&:empty?)
+        .scan(/([A-Za-z]+)(?:\s+"([^"]+)")?(?:\s*,\s*"([^"]+)")*\s*;/)
+        .map { |t| t.reject(&:nil?) }
         .map { |t| Directives.map(t) }
     end
 
@@ -50,13 +50,9 @@ module Xembly
       @array.length
     end
 
-    def self.map(text)
-      cmd, tail = text.strip.split(/\s+/, 2)
-      args = (tail.nil? ? '' : tail).strip
-        .scan(/"([^"]+)"/)
-        .flatten
-        .map { |a| a.tr('"', '') }
-      case cmd.upcase
+    def self.map(cmd)
+      args = cmd.drop(1)
+      case cmd[0].upcase
       when 'ADD'
         Add.new(args[0])
       when 'ADDIF'
