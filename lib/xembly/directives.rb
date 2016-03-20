@@ -59,6 +59,16 @@ module Xembly
         AddIf.new(args[0])
       when 'ATTR'
         Attr.new(args[0], args[1])
+      when 'CDATA'
+        fail 'CDATA command is not supported yet, please contribute'
+      when 'NS'
+        fail 'NS command is not supported yet, please contribute'
+      when 'PI'
+        fail 'PI command is not supported yet, please contribute'
+      when 'POP'
+        fail 'POP command is not supported yet, please contribute'
+      when 'PUSH'
+        fail 'PUSH command is not supported yet, please contribute'
       when 'REMOVE'
         Remove.new
       when 'SET'
@@ -69,6 +79,8 @@ module Xembly
         Up.new
       when 'XPATH'
         Xpath.new(args[0])
+      when 'XSET'
+        fail 'XSET command is not supported yet, please contribute'
       else
         fail "Unknown command \"#{cmd}\""
       end

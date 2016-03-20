@@ -34,13 +34,17 @@ class TestXembler < XeTest
   def test_modifies_xml
     xembler = Xembly::Xembler.new(
       Xembly::Directives.new(
-        'XPATH "/books"; ADD "book"; ADD "test"; UP; ADD "title"; SET "hi;you";'
+        'XPATH "/books"; ADD "book"; ADD "test"; UP;' \
+        'ADD "title"; SET "hi;you";' \
+        'XPATH "none"; XPATH "/none-again";' \
+        'XPATH "/books"; ATTR "amp", "test";'
       )
     )
     matches(
       xembler.apply('<books/>').to_xml,
       [
         '/*',
+        '/books[@amp]',
         '/books[count(book)=1]',
         '/books/book[test and title]',
         '/books/book/title[.="hi;you"]'

@@ -31,10 +31,14 @@ module Xembly
       @path = path
     end
 
-    def exec(_, cursor)
-      after = []
-      cursor.each do |node|
-        node.xpath(@path).each { |n| after.push(n) }
+    def exec(dom, cursor)
+      if @path.start_with?('/')
+        after = dom.xpath(@path)
+      else
+        after = []
+        cursor.each do |node|
+          node.xpath(@path).each { |n| after.push(n) }
+        end
       end
       after
     end
