@@ -1,6 +1,6 @@
 # encoding: utf-8
 #
-# Copyright (c) 2016 Yegor Bugayenko
+# Copyright (c) 2016-2017 Yegor Bugayenko
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -27,7 +27,7 @@ require 'minitest/autorun'
 
 # Xembly test, parent class.
 # Author:: Yegor Bugayenko (yegor@teamed.io)
-# Copyright:: Copyright (c) 2016 Yegor Bugayenko
+# Copyright:: Copyright (c) 2016-2017 Yegor Bugayenko
 # License:: MIT
 class XeTest < Minitest::Test
   def matches(xml, xpaths)

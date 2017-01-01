@@ -1,6 +1,6 @@
 # encoding: utf-8
 #
-# Copyright (c) 2016 Yegor Bugayenko
+# Copyright (c) 2016-2017 Yegor Bugayenko
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -70,7 +70,7 @@ Cucumber::Rake::Task.new(:"features:html") do |t|
 end
 
 task :copyright do
-  sh "grep -q -r '#{Date.today.strftime('%Y')}' \
+  sh "grep -q -r '2016-#{Date.today.strftime('%Y')}' \
     --include '*.rb' \
     --include '*.txt' \
     --include 'Rakefile' \
