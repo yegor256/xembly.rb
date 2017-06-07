@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.summary = 'Xembly Gem'
   s.description = 'Command Line XML Manipulator'
   s.authors = ['Yegor Bugayenko']
-  s.email = 'yegor@teamed.io'
+  s.email = 'yegor256@gmail.com'
   s.homepage = 'http://github.com/yegor256/xembly-gem'
   s.files = `git ls-files`.split($RS)
   s.executables = s.files.grep(/^bin\//) { |f| File.basename(f) }

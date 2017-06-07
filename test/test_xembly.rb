@@ -28,7 +28,7 @@ require 'slop'
 require 'test__helper'
 
 # Xembly main module test.
-# Author:: Yegor Bugayenko (yegor@teamed.io)
+# Author:: Yegor Bugayenko (yegor256@gmail.com)
 # Copyright:: Copyright (c) 2016-2017 Yegor Bugayenko
 # License:: MIT
 class TestXembly < XeTest

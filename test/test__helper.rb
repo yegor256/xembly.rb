@@ -26,7 +26,7 @@ require 'xembly'
 require 'minitest/autorun'
 
 # Xembly test, parent class.
-# Author:: Yegor Bugayenko (yegor@teamed.io)
+# Author:: Yegor Bugayenko (yegor256@gmail.com)
 # Copyright:: Copyright (c) 2016-2017 Yegor Bugayenko
 # License:: MIT
 class XeTest < Minitest::Test
