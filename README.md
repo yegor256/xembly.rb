@@ -1,6 +1,6 @@
 [![Managed by Zerocracy](http://www.zerocracy.com/badge.svg)](http://www.zerocracy.com)
 [![DevOps By Rultor.com](http://www.rultor.com/b/yegor256/xembly-gem)](http://www.rultor.com/p/yegor256/xembly-gem)
-[![We recommend RubyMine](http://img.teamed.io/rubymine-recommend.svg)](https://www.jetbrains.com/ruby/)
+[![We recommend RubyMine](http://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
 
 [![Build Status](https://travis-ci.org/yegor256/xembly-gem.svg)](https://travis-ci.org/yegor256/xembly-gem)
 [![Build status](https://ci.appveyor.com/api/projects/status/8e5dsjjemymfg510?svg=true)](https://ci.appveyor.com/project/yegor256/xembly-gem)
