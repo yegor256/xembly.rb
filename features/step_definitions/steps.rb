@@ -1,7 +1,6 @@
 # encoding: utf-8
 #
-# Copyright (c) 2016-2019 TechnoPark Corp.
-# Copyright (c) 2016-2019 Yegor Bugayenko
+# Copyright (c) 2016-2020 Yegor Bugayenko
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
