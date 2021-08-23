@@ -1,6 +1,17 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'assets/**/*'
+  DisplayCopNames: true
+  TargetRubyVersion: '2.5'
+
 MethodLength:
   Max: 50
 Style/ClassLength:
   Max: 150
 Style/CyclomaticComplexity:
   Max: 20
+Metrics/BlockLength:
+  Max: 30
+Metrics/AbcSize:
+  Max: 30

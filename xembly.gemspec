@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
@@ -21,17 +21,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'xembly/version'
 
 Gem::Specification.new do |s|
   s.specification_version = 2 if s.respond_to? :specification_version=
-  if s.respond_to? :required_rubygems_version=
-    s.required_rubygems_version = Gem::Requirement.new('>= 0')
-  end
-  s.rubygems_version = '2.2.2'
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_rubygems_version = Gem::Requirement.new('>= 0') if s.respond_to? :required_rubygems_version=
+  s.rubygems_version = '2.2'
+  s.required_ruby_version = '>= 2.5'
   s.name = 'xembly'
   s.version = Xembly::VERSION
   s.license = 'MIT'
@@ -41,18 +39,18 @@ Gem::Specification.new do |s|
   s.email = 'yegor256@gmail.com'
   s.homepage = 'http://github.com/yegor256/xembly-gem'
   s.files = `git ls-files`.split($RS)
-  s.executables = s.files.grep(/^bin\//) { |f| File.basename(f) }
-  s.test_files = s.files.grep(/^(test|spec|features)\//)
+  s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.test_files = s.files.grep(%r{^(test|spec|features)/})
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md', 'LICENSE.txt']
   s.add_runtime_dependency 'nokogiri', '1.12.3'
-  s.add_runtime_dependency 'slop', '4.4.1'
   s.add_runtime_dependency 'rake', '13.0.6'
+  s.add_runtime_dependency 'slop', '4.4.1'
   s.add_development_dependency 'coveralls', '0.8.23'
-  s.add_development_dependency 'rdoc', '6.3.2'
   s.add_development_dependency 'cucumber', '7.0.0'
   s.add_development_dependency 'minitest', '5.14.4'
+  s.add_development_dependency 'rdoc', '6.3.2'
+  s.add_development_dependency 'rspec-rails', '5.0.2'
   s.add_development_dependency 'rubocop', '1.19.1'
   s.add_development_dependency 'rubocop-rspec', '2.4.0'
-  s.add_development_dependency 'rspec-rails', '5.0.2'
 end

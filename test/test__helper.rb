@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
@@ -33,7 +33,7 @@ require 'minitest/autorun'
 class XeTest < Minitest::Test
   def matches(xml, xpaths)
     xpaths.each do |xpath|
-      fail "doesn't match '#{xpath}': #{xml}" \
+      raise "doesn't match '#{xpath}': #{xml}" \
         unless Nokogiri::XML(xml).xpath(xpath).size == 1
     end
   end

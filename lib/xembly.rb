@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
@@ -36,7 +36,7 @@ module Xembly
   # Get logger.
   def self.log
     unless @logger
-      @logger = Logger.new(STDOUT)
+      @logger = Logger.new($stdout)
       @logger.formatter = proc { |severity, _, _, msg|
         "#{severity}: #{msg.dump}\n"
       }
@@ -66,7 +66,7 @@ module Xembly
         xml = File.read(@opts[:xml])
         Xembly.log.info "reading #{@opts[:xml]}"
       else
-        xml = STDIN.read
+        xml = $stdin.read
         Xembly.log.info 'reading STDIN'
       end
       if @opts.dirs?
@@ -74,7 +74,7 @@ module Xembly
         dirs = File.read(@opts[:dirs])
       else
         Xembly.log.info "#{@opts.arguments.length} directives in command line"
-        dirs = @opts.arguments.join('')
+        dirs = @opts.arguments.join
       end
       Xembler.new(Directives.new(dirs)).apply(xml).to_xml
     end

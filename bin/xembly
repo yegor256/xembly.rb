@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
@@ -22,7 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-STDOUT.sync = true
+$stdout.sync = true
 
 require 'xembly'
 require 'xembly/version'
@@ -59,10 +59,10 @@ opts = Slop.parse(ARGV, strict: true, help: true) do |o|
   )
 end
 
-fail '-f is mandatory when using -v' if opts.verbose? && !opts.file?
+raise '-f is mandatory when using -v' if opts.verbose? && !opts.file?
 
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 output = Xembly::Base.new(opts).xml
-file = opts.file? ? File.new(opts[:file], 'w') : STDOUT
+file = opts.file? ? File.new(opts[:file], 'w') : $stdout
 file << output

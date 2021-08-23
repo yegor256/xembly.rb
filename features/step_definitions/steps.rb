@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
@@ -47,41 +47,37 @@ Given(/^I have a "([^"]*)" file with content:$/) do |file, text|
 end
 
 Then(/^XML matches "([^"]+)"$/) do |xpath|
-  fail "XML doesn't match \"#{xpath}\":\n#{@xml}" if @xml.xpath(xpath).empty?
+  raise "XML doesn't match \"#{xpath}\":\n#{@xml}" if @xml.xpath(xpath).empty?
 end
 
-When(/^I run bin\/xembly with "([^"]*)"$/) do |arg|
+When(%r{^I run bin/xembly with "([^"]*)"$}) do |arg|
   home = File.join(File.dirname(__FILE__), '../..')
   @stdout = `ruby -I#{home}/lib #{home}/bin/xembly #{arg}`
   @exitstatus = $CHILD_STATUS.exitstatus
 end
 
 Then(/^Stdout contains "([^"]*)"$/) do |txt|
-  unless @stdout.include?(txt)
-    fail "STDOUT doesn't contain '#{txt}':\n#{@stdout}"
-  end
+  raise "STDOUT doesn't contain '#{txt}':\n#{@stdout}" unless @stdout.include?(txt)
 end
 
 Then(/^Stdout is empty$/) do
-  fail "STDOUT is not empty:\n#{@stdout}" unless @stdout == ''
+  raise "STDOUT is not empty:\n#{@stdout}" unless @stdout == ''
 end
 
 Then(/^XML file "([^"]+)" matches "((?:[^"]|\\")+)"$/) do |file, xpath|
-  fail "File #{file} doesn't exit" unless File.exist?(file)
+  raise "File #{file} doesn't exit" unless File.exist?(file)
 
   xml = Nokogiri::XML.parse(File.read(file))
   xml.remove_namespaces!
-  if xml.xpath(xpath.gsub(/\\"/, '"')).empty?
-    fail "XML file #{file} doesn't match \"#{xpath}\":\n#{xml}"
-  end
+  raise "XML file #{file} doesn't match \"#{xpath}\":\n#{xml}" if xml.xpath(xpath.gsub(/\\"/, '"')).empty?
 end
 
 Then(/^Exit code is zero$/) do
-  fail "Non-zero exit code #{@exitstatus}" unless @exitstatus == 0
+  raise "Non-zero exit code #{@exitstatus}" unless @exitstatus.zero?
 end
 
 Then(/^Exit code is not zero$/) do
-  fail 'Zero exit code' if @exitstatus == 0
+  raise 'Zero exit code' if @exitstatus.zero?
 end
 
 When(/^I run bash with$/) do |text|

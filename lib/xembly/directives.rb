@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
@@ -61,15 +61,15 @@ module Xembly
       when 'ATTR'
         Attr.new(args[0], args[1])
       when 'CDATA'
-        fail 'CDATA command is not supported yet, please contribute'
+        raise 'CDATA command is not supported yet, please contribute'
       when 'NS'
-        fail 'NS command is not supported yet, please contribute'
+        raise 'NS command is not supported yet, please contribute'
       when 'PI'
-        fail 'PI command is not supported yet, please contribute'
+        raise 'PI command is not supported yet, please contribute'
       when 'POP'
-        fail 'POP command is not supported yet, please contribute'
+        raise 'POP command is not supported yet, please contribute'
       when 'PUSH'
-        fail 'PUSH command is not supported yet, please contribute'
+        raise 'PUSH command is not supported yet, please contribute'
       when 'REMOVE'
         Remove.new
       when 'SET'
@@ -81,9 +81,9 @@ module Xembly
       when 'XPATH'
         Xpath.new(args[0])
       when 'XSET'
-        fail 'XSET command is not supported yet, please contribute'
+        raise 'XSET command is not supported yet, please contribute'
       else
-        fail "Unknown command \"#{cmd}\""
+        raise "Unknown command \"#{cmd}\""
       end
     end
   end

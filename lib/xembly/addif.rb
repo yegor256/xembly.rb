@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
@@ -36,7 +36,7 @@ module Xembly
     def exec(dom, cursor)
       after = []
       cursor.each do |node|
-        if !node.element_children.any? { |e| e.name == @name }
+        if node.element_children.none? { |e| e.name == @name }
           child = Nokogiri::XML::Node.new(@name, dom)
           node.add_child(child)
           after.push(child)

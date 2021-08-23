@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
@@ -34,7 +34,7 @@ def version
   Gem::Specification.load(Dir['*.gemspec'].first).version
 end
 
-task default: [:clean, :test, :features, :rubocop, :copyright]
+task default: %i[clean test features rubocop copyright]
 
 require 'rake/testtask'
 desc 'Run all unit tests'
@@ -66,7 +66,7 @@ Cucumber::Rake::Task.new(:features) do |t|
   Rake::Cleaner.cleanup_files(['coverage'])
   t.profile = 'travis'
 end
-Cucumber::Rake::Task.new(:"features:html") do |t|
+Cucumber::Rake::Task.new(:'features:html') do |t|
   t.profile = 'html_report'
 end
 

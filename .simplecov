@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
@@ -23,13 +23,13 @@
 
 require 'coveralls'
 
-if Gem.win_platform? then
+if Gem.win_platform?
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
     SimpleCov::Formatter::HTMLFormatter
   ]
   SimpleCov.start do
-    add_filter "/test/"
-    add_filter "/features/"
+    add_filter '/test/'
+    add_filter '/features/'
   end
 else
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new [
@@ -37,8 +37,8 @@ else
     Coveralls::SimpleCov::Formatter
   ]
   SimpleCov.start do
-    add_filter "/test/"
-    add_filter "/features/"
+    add_filter '/test/'
+    add_filter '/features/'
     minimum_coverage 90
   end
 end
