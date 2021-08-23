@@ -7,8 +7,7 @@
 [![Build Status](https://travis-ci.org/yegor256/xembly-gem.svg)](https://travis-ci.org/yegor256/xembly-gem)
 [![Build status](https://ci.appveyor.com/api/projects/status/8e5dsjjemymfg510?svg=true)](https://ci.appveyor.com/project/yegor256/xembly-gem)
 [![Gem Version](https://badge.fury.io/rb/xembly.svg)](http://badge.fury.io/rb/xembly)
-[![Dependency Status](https://gemnasium.com/yegor256/xembly-gem.svg)](https://gemnasium.com/yegor256/xembly-gem)
-[![Code Climate](http://img.shields.io/codeclimate/github/yegor256/xembly-gem.svg)](https://codeclimate.com/github/yegor256/xembly-gem)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f26349e81b04628d8bf7/maintainability)](https://codeclimate.com/github/yegor256/xembly-gem/maintainability)
 [![Coverage Status](https://img.shields.io/coveralls/yegor256/xembly-gem.svg)](https://coveralls.io/r/yegor256/xembly-gem)
 
 Xembly is assembly for XML.
