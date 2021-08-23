@@ -37,6 +37,7 @@ module Xembly
       cursor = [dom]
       @dirs.each do |dir|
         cursor = dir.exec(dom, cursor)
+        Xembly.log.info "Applied: #{dir}"
       end
       Xembly.log.info "#{@dirs.length} directive(s) applied"
       dom

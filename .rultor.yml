@@ -1,28 +1,21 @@
 assets:
   rubygems.yml: yegor256/home#assets/rubygems.yml
-  s3cfg: yegor256/home#assets/s3cfg
 install: |
-  sudo apt-get update
-  sudo gem install pdd -v 0.20.5
+  pdd -f /dev/null
+  sudo bundle install --no-color "--gemfile=$(pwd)/Gemfile"
 release:
   script: |-
-    sudo bundle install
-    rake
-    rm -rf *.gem
+    bundle exec rake clean test rubocop copyright
     sed -i "s/1\.0\.snapshot/${tag}/g" lib/xembly/version.rb
     git add lib/xembly/version.rb
     git commit -m "version set to ${tag}"
     gem build xembly.gemspec
     chmod 0600 ../rubygems.yml
     gem push *.gem --config-file ../rubygems.yml
-    sudo gem install xembly
-    pdd --source=$(pwd) --verbose --file=xembly-gem.xml -e=test/** -e=features/** -e=README.md
-    s3cmd --no-progress put xembly-gem.xml --config=../s3cfg s3://pdd.teamed.io/xembly-gem.xml
-  commanders:
-  - yegor256
-architect:
-- yegor256
-- davvd
 merge:
-  commanders: []
-deploy: {}
+  script: |-
+    bundle exec rake clean test rubocop copyright
+deploy:
+  script: |-
+    echo "There is nothing to deploy"
+    exit -1

@@ -44,14 +44,14 @@ Gem::Specification.new do |s|
   s.test_files = s.files.grep(/^(test|spec|features)\//)
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md', 'LICENSE.txt']
-  s.add_runtime_dependency 'nokogiri', '1.6.7.2'
+  s.add_runtime_dependency 'nokogiri', '1.12.3'
   s.add_runtime_dependency 'slop', '4.4.1'
-  s.add_runtime_dependency 'rake', '11.1.1'
-  s.add_development_dependency 'coveralls', '0.7.2'
-  s.add_development_dependency 'rdoc', '4.2.0'
-  s.add_development_dependency 'cucumber', '1.3.17'
-  s.add_development_dependency 'minitest', '5.5.0'
-  s.add_development_dependency 'rubocop', '0.24.1'
-  s.add_development_dependency 'rubocop-rspec', '1.2.1'
-  s.add_development_dependency 'rspec-rails', '3.1.0'
+  s.add_runtime_dependency 'rake', '13.0.6'
+  s.add_development_dependency 'coveralls', '0.8.23'
+  s.add_development_dependency 'rdoc', '6.3.2'
+  s.add_development_dependency 'cucumber', '7.0.0'
+  s.add_development_dependency 'minitest', '5.14.4'
+  s.add_development_dependency 'rubocop', '1.19.1'
+  s.add_development_dependency 'rubocop-rspec', '2.4.0'
+  s.add_development_dependency 'rspec-rails', '5.0.2'
 end
