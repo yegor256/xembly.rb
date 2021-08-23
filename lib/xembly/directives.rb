@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
 #
@@ -36,10 +37,10 @@ module Xembly
     # +text+:: Directives in text
     def initialize(text)
       @array = text
-        .strip
-        .scan(/([A-Za-z]+)(?:\s+"([^"]+)")?(?:\s*,\s*"([^"]+)")*\s*;/)
-        .map { |t| t.reject(&:nil?) }
-        .map { |t| Directives.map(t) }
+               .strip
+               .scan(/([A-Za-z]+)(?:\s+"([^"]+)")?(?:\s*,\s*"([^"]+)")*\s*;/)
+               .map { |t| t.reject(&:nil?) }
+               .map { |t| Directives.map(t) }
     end
 
     def each(&block)

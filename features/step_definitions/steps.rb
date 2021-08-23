@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
 #
@@ -67,6 +68,7 @@ end
 
 Then(/^XML file "([^"]+)" matches "((?:[^"]|\\")+)"$/) do |file, xpath|
   fail "File #{file} doesn't exit" unless File.exist?(file)
+
   xml = Nokogiri::XML.parse(File.read(file))
   xml.remove_namespaces!
   if xml.xpath(xpath.gsub(/\\"/, '"')).empty?

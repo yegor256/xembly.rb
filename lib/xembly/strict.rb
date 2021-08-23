@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 #
 # Copyright (c) 2016-2021 Yegor Bugayenko
 #
@@ -34,6 +35,7 @@ module Xembly
     def exec(_, cursor)
       fail "there are #{cursor.length} nodes, while #{@count} expected" unless \
         cursor.length == @count
+
       cursor
     end
   end
