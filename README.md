@@ -1,3 +1,5 @@
+<img src="http://www.xembly.org/logo.png" width="64px" height="64px" />
+
 [![Managed by Zerocracy](http://www.zerocracy.com/badge.svg)](http://www.zerocracy.com)
 [![DevOps By Rultor.com](http://www.rultor.com/b/yegor256/xembly-gem)](http://www.rultor.com/p/yegor256/xembly-gem)
 [![We recommend RubyMine](https://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
@@ -9,29 +11,24 @@
 [![Code Climate](http://img.shields.io/codeclimate/github/yegor256/xembly-gem.svg)](https://codeclimate.com/github/yegor256/xembly-gem)
 [![Coverage Status](https://img.shields.io/coveralls/yegor256/xembly-gem.svg)](https://coveralls.io/r/yegor256/xembly-gem)
 
-## Assembly for XML
+Xembly is assembly for XML.
 
 Read this [blog post](http://www.yegor256.com/2014/04/09/xembly-intro.html)
 and check this project: [yegor256/xembly](https://github.com/yegor256/xembly)
 
-## How to Install?
-
-You will need Ruby 2.0+:
+To install, you will need Ruby 2.0+:
 
 ```bash
 $ gem install xembly
 ```
 
-## How to Run?
-
-Run it locally and read its output:
+Then, run it and read its output:
 
 ```bash
 $ xembly --help
 ```
 
-Say, you want to modify an existing XML document, which is
-in file `doc.xml`:
+Say, you want to modify an existing XML document, which is in the file `doc.xml`:
 
 ```xml
 <books>
@@ -53,5 +50,5 @@ $ xembly --xml doc.xml 'XPATH "/books"; ADD "book"; ATTR "isbn", "0201379430"; S
 
 Simple as that!
 
-Full specification of Xembly language is
+The full specification of Xembly language is 
 [here](https://github.com/yegor256/xembly).
