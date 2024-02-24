@@ -1,11 +1,8 @@
-<img src="http://www.xembly.org/logo.png" width="64px" height="64px" />
+<img src="https://www.xembly.org/logo.png" width="64px" height="64px" />
 
-[![Managed by Zerocracy](http://www.zerocracy.com/badge.svg)](http://www.zerocracy.com)
 [![DevOps By Rultor.com](http://www.rultor.com/b/yegor256/xembly-gem)](http://www.rultor.com/p/yegor256/xembly-gem)
 [![We recommend RubyMine](https://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
 
-[![Build Status](https://travis-ci.org/yegor256/xembly-gem.svg)](https://travis-ci.org/yegor256/xembly-gem)
-[![Build status](https://ci.appveyor.com/api/projects/status/8e5dsjjemymfg510?svg=true)](https://ci.appveyor.com/project/yegor256/xembly-gem)
 [![Gem Version](https://badge.fury.io/rb/xembly.svg)](http://badge.fury.io/rb/xembly)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f26349e81b04628d8bf7/maintainability)](https://codeclimate.com/github/yegor256/xembly-gem/maintainability)
 [![Test Coverage](https://img.shields.io/codecov/c/github/yegor256/xembly-gem.svg)](https://codecov.io/github/yegor256/xembly-gem?branch=master)
