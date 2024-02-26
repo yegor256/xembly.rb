@@ -23,8 +23,8 @@
 
 require 'simplecov'
 require 'nokogiri'
-require 'xembly'
 require 'minitest/autorun'
+require_relative '../lib/xembly'
 
 # Xembly test, parent class.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)

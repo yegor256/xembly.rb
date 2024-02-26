@@ -21,11 +21,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'xembly'
 require 'nokogiri'
 require 'tmpdir'
 require 'slop'
 require 'English'
+require_relative '../lib/xembly'
 
 Before do
   @cwd = Dir.pwd
