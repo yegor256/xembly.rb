@@ -23,10 +23,10 @@
 
 require 'minitest/autorun'
 require 'nokogiri'
-require 'xembly'
 require 'tmpdir'
 require 'slop'
-require 'test__helper'
+require_relative '../lib/xembly'
+require_relative 'test__helper'
 
 # Xembly main module test.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
@@ -69,7 +69,7 @@ class TestXembly < XeTest
   private
 
   def opts(args)
-    Slop.parse args do |o|
+    Slop.parse(args, help: true) do |o|
       o.on '-v', '--verbose'
       o.string '-x', '--xml', argument: :required
       o.string '-d', '--dirs', argument: :required

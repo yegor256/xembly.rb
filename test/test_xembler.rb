@@ -25,7 +25,7 @@ require 'minitest/autorun'
 require 'nokogiri'
 require 'xembly/xembler'
 require 'xembly/directives'
-require 'test__helper'
+require_relative 'test__helper'
 
 # Xembly::Xembler module tests.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)

@@ -22,6 +22,7 @@
 # SOFTWARE.
 
 require 'nokogiri'
+require_relative '../xembly'
 
 module Xembly
   # XPATH directive

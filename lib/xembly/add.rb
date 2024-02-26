@@ -21,8 +21,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'xembly'
 require 'nokogiri'
+require_relative '../xembly'
 
 module Xembly
   # ADD directive

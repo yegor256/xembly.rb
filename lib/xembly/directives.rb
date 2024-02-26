@@ -21,14 +21,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'xembly/add'
-require 'xembly/addif'
-require 'xembly/attr'
-require 'xembly/remove'
-require 'xembly/set'
-require 'xembly/strict'
-require 'xembly/up'
-require 'xembly/xpath'
+require_relative 'add'
+require_relative 'addif'
+require_relative 'attr'
+require_relative 'remove'
+require_relative 'set'
+require_relative 'strict'
+require_relative 'up'
+require_relative 'xpath'
 
 module Xembly
   # Directives

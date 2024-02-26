@@ -21,12 +21,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'xembly/version'
-require 'xembly/xembler'
-require 'xembly/directives'
 require 'nokogiri'
 require 'logger'
 require 'time'
+require_relative 'xembly/version'
+require_relative 'xembly/xembler'
+require_relative 'xembly/directives'
 
 # Xembly main module.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
