@@ -22,4 +22,4 @@
 # SOFTWARE.
 
 require 'simplecov'
-require_relative '../lib/xembly'
+require_relative '../../lib/xembly'

@@ -43,14 +43,7 @@ Gem::Specification.new do |s|
   s.test_files = s.files.grep(%r{^(test|spec|features)/})
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md', 'LICENSE.txt']
-  s.add_runtime_dependency 'nokogiri', '1.12.3'
-  s.add_runtime_dependency 'rake', '13.0.6'
-  s.add_runtime_dependency 'slop', '4.4.1'
-  s.add_development_dependency 'coveralls', '0.8.23'
-  s.add_development_dependency 'cucumber', '7.0.0'
-  s.add_development_dependency 'minitest', '5.14.4'
-  s.add_development_dependency 'rdoc', '6.3.2'
-  s.add_development_dependency 'rspec-rails', '5.0.2'
-  s.add_development_dependency 'rubocop', '1.19.1'
-  s.add_development_dependency 'rubocop-rspec', '2.4.0'
+  s.add_runtime_dependency 'nokogiri', '1.16.2'
+  s.add_runtime_dependency 'rake', '13.1.0'
+  s.add_runtime_dependency 'slop', '4.10.1'
 end

@@ -25,7 +25,7 @@ require 'nokogiri'
 require 'tmpdir'
 require 'slop'
 require 'English'
-require_relative '../lib/xembly'
+require_relative '../../lib/xembly'
 
 Before do
   @cwd = Dir.pwd

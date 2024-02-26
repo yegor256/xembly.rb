@@ -22,7 +22,7 @@
 # SOFTWARE.
 
 require 'nokogiri'
-require_relative '../xembly'
+require_relative '../xembly/base'
 
 module Xembly
   # ADD directive
