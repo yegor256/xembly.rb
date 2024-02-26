@@ -39,7 +39,7 @@ module Xembly
       @array = text
                .strip
                .scan(/([A-Za-z]+)(?:\s+"([^"]+)")?(?:\s*,\s*"([^"]+)")*\s*;/)
-               .map { |t| t.reject(&:nil?) }
+               .map(&:compact)
                .map { |t| Directives.map(t) }
     end
 

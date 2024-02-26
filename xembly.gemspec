@@ -26,9 +26,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'xembly/version'
 
 Gem::Specification.new do |s|
-  s.specification_version = 2 if s.respond_to? :specification_version=
   s.required_rubygems_version = Gem::Requirement.new('>= 0') if s.respond_to? :required_rubygems_version=
-  s.rubygems_version = '2.2'
   s.required_ruby_version = '>= 2.5'
   s.name = 'xembly'
   s.version = Xembly::VERSION
@@ -40,10 +38,10 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/yegor256/xembly-gem'
   s.files = `git ls-files`.split($RS)
   s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  s.test_files = s.files.grep(%r{^(test|spec|features)/})
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md', 'LICENSE.txt']
   s.add_runtime_dependency 'nokogiri', '1.16.2'
   s.add_runtime_dependency 'rake', '13.1.0'
   s.add_runtime_dependency 'slop', '4.10.1'
+  s.metadata['rubygems_mfa_required'] = 'true'
 end

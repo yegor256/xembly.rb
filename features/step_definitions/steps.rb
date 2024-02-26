@@ -30,20 +30,18 @@ require_relative '../../lib/xembly'
 Before do
   @cwd = Dir.pwd
   @dir = Dir.mktmpdir('test')
-  FileUtils.mkdir_p(@dir) unless File.exist?(@dir)
+  FileUtils.mkdir_p(@dir)
   Dir.chdir(@dir)
 end
 
 After do
   Dir.chdir(@cwd)
-  FileUtils.rm_rf(@dir) if File.exist?(@dir)
+  FileUtils.rm_rf(@dir)
 end
 
 Given(/^I have a "([^"]*)" file with content:$/) do |file, text|
   FileUtils.mkdir_p(File.dirname(file)) unless File.exist?(file)
-  File.open(file, 'w') do |f|
-    f.write(text.gsub(/\\xFF/, 0xff.chr))
-  end
+  File.write(file, text.gsub('\\xFF', 0xff.chr))
 end
 
 Then(/^XML matches "([^"]+)"$/) do |xpath|
@@ -69,7 +67,7 @@ Then(/^XML file "([^"]+)" matches "((?:[^"]|\\")+)"$/) do |file, xpath|
 
   xml = Nokogiri::XML.parse(File.read(file))
   xml.remove_namespaces!
-  raise "XML file #{file} doesn't match \"#{xpath}\":\n#{xml}" if xml.xpath(xpath.gsub(/\\"/, '"')).empty?
+  raise "XML file #{file} doesn't match \"#{xpath}\":\n#{xml}" if xml.xpath(xpath.gsub('\\"', '"')).empty?
 end
 
 Then(/^Exit code is zero$/) do
