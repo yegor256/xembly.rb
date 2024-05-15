@@ -24,7 +24,7 @@
 source 'https://rubygems.org'
 gemspec
 gem 'cucumber', '9.2.0', require: false
-gem 'minitest', '5.22.3', require: false
+gem 'minitest', '5.23.0', require: false
 gem 'rdoc', '6.6.3.1', require: false
 gem 'rspec-rails', '6.1.2', require: false
 gem 'rubocop', '1.62.1', require: false
