@@ -46,5 +46,5 @@ $ xembly --xml doc.xml 'XPATH "/books"; ADD "book"; ATTR "isbn", "0201379430"; S
 
 Simple as that!
 
-The full specification of Xembly language is 
+The full specification of Xembly language is
 [here](https://github.com/yegor256/xembly).
