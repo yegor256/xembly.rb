@@ -6,7 +6,6 @@ AllCops:
   DisplayCopNames: true
   TargetRubyVersion: '2.5'
   SuggestExtensions: false
-
 MethodLength:
   Max: 50
 Style/ClassLength:
@@ -17,3 +16,7 @@ Metrics/BlockLength:
   Max: 30
 Metrics/AbcSize:
   Max: 30
+required:
+  - rubocop-rake
+  - rubocop-minitest
+  - rubocop-performance
