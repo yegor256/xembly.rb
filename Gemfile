@@ -10,7 +10,6 @@ gemspec
 gem 'cucumber', '9.2.1', require: false
 gem 'minitest', '5.25.4', require: false
 gem 'rdoc', '6.11.0', require: false
-gem 'rspec-rails', '7.1.0', require: false
 gem 'rubocop', '1.62.1', require: false
 gem 'rubocop-minitest', '>0', require: false
 gem 'rubocop-performance', '>0', require: false
