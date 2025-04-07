@@ -1,9 +1,9 @@
 <img src="https://www.xembly.org/logo.png" width="64px" height="64px" />
 
-[![DevOps By Rultor.com](http://www.rultor.com/b/yegor256/xembly.rb)](http://www.rultor.com/p/yegor256/xembly.rb)
+[![DevOps By Rultor.com](https://www.rultor.com/b/yegor256/xembly.rb)](https://www.rultor.com/p/yegor256/xembly.rb)
 [![We recommend RubyMine](https://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
 
-[![Gem Version](https://badge.fury.io/rb/xembly.svg)](http://badge.fury.io/rb/xembly)
+[![Gem Version](https://badge.fury.io/rb/xembly.svg)](https://badge.fury.io/rb/xembly)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f26349e81b04628d8bf7/maintainability)](https://codeclimate.com/github/yegor256/xembly.rb/maintainability)
 [![Test Coverage](https://img.shields.io/codecov/c/github/yegor256/xembly.rb.svg)](https://codecov.io/github/yegor256/xembly.rb?branch=master)
 
