@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.description = 'Command Line XML Manipulator'
   s.authors = ['Yegor Bugayenko']
   s.email = 'yegor256@gmail.com'
-  s.homepage = 'http://github.com/yegor256/xembly.rb'
+  s.homepage = 'https://github.com/yegor256/xembly.rb'
   s.files = `git ls-files`.split($RS)
   s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.rdoc_options = ['--charset=UTF-8']
