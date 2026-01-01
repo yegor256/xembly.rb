@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-# SPDX-FileCopyrightText: Copyright (c) 2016-2025 Yegor Bugayenko
+# SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
 require 'simplecov'
@@ -11,7 +11,7 @@ require_relative '../lib/xembly'
 
 # Xembly test, parent class.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
-# Copyright:: Copyright (c) 2016-2025 Yegor Bugayenko
+# Copyright:: Copyright (c) 2016-2026 Yegor Bugayenko
 # License:: MIT
 class XeTest < Minitest::Test
   def matches(xml, xpaths)

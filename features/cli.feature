@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: Copyright (c) 2016-2025 Yegor Bugayenko
+# SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 Feature: Command Line Processing
   As an owner of XML documetn I want to be able to

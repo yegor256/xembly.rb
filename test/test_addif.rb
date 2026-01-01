@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-# SPDX-FileCopyrightText: Copyright (c) 2016-2025 Yegor Bugayenko
+# SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
 require 'xembly/addif'
@@ -9,7 +9,7 @@ require 'test__helper'
 
 # Xembly::AddIf tests.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
-# Copyright:: Copyright (c) 2016-2025 Yegor Bugayenko
+# Copyright:: Copyright (c) 2016-2026 Yegor Bugayenko
 # License:: MIT
 class TestAddIf < XeTest
   def test_skips_nodes
