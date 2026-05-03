@@ -46,7 +46,7 @@ Then(/^Stdout is empty$/) do
 end
 
 Then(/^XML file "([^"]+)" matches "((?:[^"]|\\")+)"$/) do |file, xpath|
-  raise "File #{file} doesn't exit" unless File.exist?(file)
+  raise "File #{file} doesn't exist" unless File.exist?(file)
 
   xml = Nokogiri::XML.parse(File.read(file))
   xml.remove_namespaces!

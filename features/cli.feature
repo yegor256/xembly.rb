@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 Feature: Command Line Processing
-  As an owner of XML documetn I want to be able to
+  As an owner of XML document I want to be able to
   call Xembly as a command line tool and modify it
 
   Scenario: Help can be printed
