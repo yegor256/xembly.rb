@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
@@ -20,7 +19,7 @@ module Xembly
     def exec(_, cursor)
       cursor.each do |node|
         node[@name] = @value
-        Xembly.log.info "attribute \"#{@name}\" set for node \"#{node.name}\""
+        Xembly.log.info("attribute \"#{@name}\" set for node \"#{node.name}\"")
       end
       cursor
     end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
@@ -21,9 +20,9 @@ module Xembly
       cursor = [dom]
       @dirs.each do |dir|
         cursor = dir.exec(dom, cursor)
-        Xembly.log.info "Applied: #{dir}"
+        Xembly.log.info("Applied: #{dir}")
       end
-      Xembly.log.info "#{@dirs.length} directive(s) applied"
+      Xembly.log.info("#{@dirs.length} directive(s) applied")
       dom
     end
   end

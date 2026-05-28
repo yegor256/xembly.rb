@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
 require 'minitest/autorun'
 require 'nokogiri'
-require 'tmpdir'
 require 'slop'
+require 'tmpdir'
 require_relative '../lib/xembly'
 require_relative 'test__helper'
 
@@ -17,28 +16,20 @@ require_relative 'test__helper'
 # License:: MIT
 class TestXembly < XeTest
   def test_basic
-    opts = opts(['-x', '/dev/null', 'ADD "books";', 'ADD "book";'])
     matches(
-      Xembly::Base.new(opts).xml,
-      [
-        '/books',
-        '/books[count(book)=1]'
-      ]
+      Xembly::Base.new(opts(['-x', '/dev/null', 'ADD "books";', 'ADD "book";'])).xml,
+      ['/books', '/books[count(book)=1]']
     )
   end
 
   def test_reading_from_file
-    Dir.mktmpdir 'test' do |dir|
+    Dir.mktmpdir('test') do |dir|
       xml = File.join(dir, 'input.xml')
       File.write(xml, '<books/>')
       dirs = File.join(dir, 'dirs.txt')
-      File.write(
-        dirs,
-        'XPATH "/books"; ADD "book"; ATTR "id", "123"; SET "Elegant Objects";'
-      )
-      opts = opts(['--xml', xml, '--dirs', dirs])
+      File.write(dirs, 'XPATH "/books"; ADD "book"; ATTR "id", "123"; SET "Elegant Objects";')
       matches(
-        Xembly::Base.new(opts).xml,
+        Xembly::Base.new(opts(['--xml', xml, '--dirs', dirs])).xml,
         [
           '/books',
           '/books[count(book)=1]',
@@ -53,9 +44,9 @@ class TestXembly < XeTest
 
   def opts(args)
     Slop.parse(args, help: true) do |o|
-      o.on '-v', '--verbose'
-      o.string '-x', '--xml', argument: :required
-      o.string '-d', '--dirs', argument: :required
+      o.on('-v', '--verbose')
+      o.string('-x', '--xml', argument: :required)
+      o.string('-d', '--dirs', argument: :required)
     end
   end
 end

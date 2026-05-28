@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
@@ -23,7 +22,7 @@ module Xembly
           child = Nokogiri::XML::Node.new(@name, dom)
           node.add_child(child)
           after.push(child)
-          Xembly.log.info "node \"#{@name}\" added to \"#{node.name}\""
+          Xembly.log.info("node \"#{@name}\" added to \"#{node.name}\"")
         else
           after.push(node)
         end

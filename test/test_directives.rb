@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
@@ -17,6 +16,6 @@ class TestDirectives < Minitest::Test
     dirs = Xembly::Directives.new(
       "  ADD \"book;&quot;me\";UP;ATTR \"a1\", \"works, for\nme!\";  "
     )
-    assert dirs.length == 3, 'three directives must be there'
+    assert_equal(3, dirs.length, 'three directives must be there')
   end
 end

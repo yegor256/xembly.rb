@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
-require 'nokogiri'
-require 'tmpdir'
-require 'slop'
 require 'English'
+require 'nokogiri'
+require 'slop'
+require 'tmpdir'
 require_relative '../../lib/xembly'
 
 Before do
@@ -28,7 +27,7 @@ Given(/^I have a "([^"]*)" file with content:$/) do |file, text|
 end
 
 Then(/^XML matches "([^"]+)"$/) do |xpath|
-  raise "XML doesn't match \"#{xpath}\":\n#{@xml}" if @xml.xpath(xpath).empty?
+  raise(StandardError, "XML doesn't match \"#{xpath}\":\n#{@xml}") if @xml.xpath(xpath).empty?
 end
 
 When(%r{^I run bin/xembly with "([^"]*)"$}) do |arg|
@@ -38,27 +37,27 @@ When(%r{^I run bin/xembly with "([^"]*)"$}) do |arg|
 end
 
 Then(/^Stdout contains "([^"]*)"$/) do |txt|
-  raise "STDOUT doesn't contain '#{txt}':\n#{@stdout}" unless @stdout.include?(txt)
+  raise(StandardError, "STDOUT doesn't contain '#{txt}':\n#{@stdout}") unless @stdout.include?(txt)
 end
 
 Then(/^Stdout is empty$/) do
-  raise "STDOUT is not empty:\n#{@stdout}" unless @stdout == ''
+  raise(StandardError, "STDOUT is not empty:\n#{@stdout}") unless @stdout == ''
 end
 
 Then(/^XML file "([^"]+)" matches "((?:[^"]|\\")+)"$/) do |file, xpath|
-  raise "File #{file} doesn't exist" unless File.exist?(file)
-
+  raise(StandardError, "File #{file} doesn't exist") unless File.exist?(file)
   xml = Nokogiri::XML.parse(File.read(file))
   xml.remove_namespaces!
-  raise "XML file #{file} doesn't match \"#{xpath}\":\n#{xml}" if xml.xpath(xpath.gsub('\\"', '"')).empty?
+  raise(StandardError, "XML file #{file} doesn't match \"#{xpath}\":\n#{xml}") \
+    if xml.xpath(xpath.gsub('\\"', '"')).empty?
 end
 
 Then(/^Exit code is zero$/) do
-  raise "Non-zero exit code #{@exitstatus}" unless @exitstatus.zero?
+  raise(StandardError, "Non-zero exit code #{@exitstatus}") unless @exitstatus.zero?
 end
 
 Then(/^Exit code is not zero$/) do
-  raise 'Zero exit code' if @exitstatus.zero?
+  raise(StandardError, 'Zero exit code') if @exitstatus.zero?
 end
 
 When(/^I run bash with$/) do |text|

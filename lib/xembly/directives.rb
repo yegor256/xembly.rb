@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
@@ -19,11 +18,11 @@ module Xembly
     # Ctor.
     # +text+:: Directives in text
     def initialize(text)
-      @array = text
-               .strip
-               .scan(/([A-Za-z]+)(?:\s+"([^"]+)")?(?:\s*,\s*"([^"]+)")*\s*;/)
-               .map(&:compact)
-               .map { |t| Directives.map(t) }
+      @array =
+        text
+        .strip
+        .scan(/([A-Za-z]+)(?:\s+"([^"]+)")?(?:\s*,\s*"([^"]+)")*\s*;/)
+        .map { |t| Directives.map(t.compact) }
     end
 
     def each(&block)
@@ -44,15 +43,15 @@ module Xembly
       when 'ATTR'
         Attr.new(args[0], args[1])
       when 'CDATA'
-        raise 'CDATA command is not supported yet, please contribute'
+        raise(ArgumentError, 'CDATA command is not supported yet, please contribute')
       when 'NS'
-        raise 'NS command is not supported yet, please contribute'
+        raise(ArgumentError, 'NS command is not supported yet, please contribute')
       when 'PI'
-        raise 'PI command is not supported yet, please contribute'
+        raise(ArgumentError, 'PI command is not supported yet, please contribute')
       when 'POP'
-        raise 'POP command is not supported yet, please contribute'
+        raise(ArgumentError, 'POP command is not supported yet, please contribute')
       when 'PUSH'
-        raise 'PUSH command is not supported yet, please contribute'
+        raise(ArgumentError, 'PUSH command is not supported yet, please contribute')
       when 'REMOVE'
         Remove.new
       when 'SET'
@@ -64,9 +63,9 @@ module Xembly
       when 'XPATH'
         Xpath.new(args[0])
       when 'XSET'
-        raise 'XSET command is not supported yet, please contribute'
+        raise(ArgumentError, 'XSET command is not supported yet, please contribute')
       else
-        raise "Unknown command \"#{cmd}\""
+        raise(ArgumentError, "Unknown command \"#{cmd}\"")
       end
     end
   end

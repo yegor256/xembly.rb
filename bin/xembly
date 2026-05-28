@@ -10,36 +10,22 @@ require 'slop'
 require_relative '../lib/xembly'
 require_relative '../lib/xembly/version'
 
-opts = Slop.parse(ARGV, strict: true, help: true) do |o|
-  o.banner = "Usage (#{Xembly::VERSION}): xembly [options] [directives]"
-  o.on '-h', '--help', 'Print help' do
-    puts o
-    exit
+opts =
+  Slop.parse(ARGV, strict: true, help: true) do |o|
+    o.banner = "Usage (#{Xembly::VERSION}): xembly [options] [directives]"
+    o.on('-h', '--help', 'Print help') do
+      puts(o)
+      exit
+    end
+    o.on('-v', '--verbose', 'Enable verbose mode')
+    o.on('--version', 'Show current version') do
+      puts(Xembly::VERSION)
+      exit
+    end
+    o.string('-d', '--dirs', 'File path with Xembly directives (command line args by default)', argument: :required)
+    o.string('-x', '--xml', 'File to read XML from (stdin by default)', argument: :required)
+    o.string('-f', '--file', 'File to save XML into (stdout by default)', argument: :required)
   end
-  o.on '-v', '--verbose', 'Enable verbose mode'
-  o.on '--version', 'Show current version' do
-    puts Xembly::VERSION
-    exit
-  end
-  o.string(
-    '-d',
-    '--dirs',
-    'File path with Xembly directives (command line args by default)',
-    argument: :required
-  )
-  o.string(
-    '-x',
-    '--xml',
-    'File to read XML from (stdin by default)',
-    argument: :required
-  )
-  o.string(
-    '-f',
-    '--file',
-    'File to save XML into (stdout by default)',
-    argument: :required
-  )
-end
 
 raise '-f is mandatory when using -v' if opts.verbose? && !opts.file?
 

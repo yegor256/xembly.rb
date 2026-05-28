@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
@@ -19,7 +18,7 @@ module Xembly
     def exec(_, cursor)
       cursor.each do |node|
         node.content = Nokogiri::HTML.parse(@value).text
-        Xembly.log.info "node \"#{node.name}\" text content set"
+        Xembly.log.info("node \"#{node.name}\" text content set")
       end
       cursor
     end

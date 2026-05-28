@@ -3,10 +3,10 @@
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
-require 'rubygems'
 require 'rake'
-require 'rdoc'
 require 'rake/clean'
+require 'rdoc'
+require 'rubygems'
 
 def name
   @name ||= File.basename(Dir['*.gemspec'].first, '.*')
@@ -40,7 +40,6 @@ require 'rubocop/rake_task'
 desc 'Run RuboCop on all directories'
 RuboCop::RakeTask.new(:rubocop) do |task|
   task.fail_on_error = true
-  task.requires << 'rubocop-rspec'
 end
 
 require 'cucumber/rake/task'

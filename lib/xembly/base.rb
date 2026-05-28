@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
-require 'nokogiri'
 require 'logger'
+require 'nokogiri'
 require 'time'
 
 # Xembly main module.
@@ -17,9 +16,10 @@ module Xembly
   def self.log
     unless @logger
       @logger = Logger.new($stdout)
-      @logger.formatter = proc { |severity, _, _, msg|
-        "#{severity}: #{msg.dump}\n"
-      }
+      @logger.formatter =
+        proc do |severity, _, _, msg|
+          "#{severity}: #{msg.dump}\n"
+        end
       @logger.level = Logger::ERROR
     end
     @logger
@@ -36,24 +36,24 @@ module Xembly
     def initialize(opts)
       @opts = opts
       Xembly.log.level = Logger::INFO if @opts.verbose?
-      Xembly.log.info "my version is #{Xembly::VERSION}"
-      Xembly.log.info "Ruby version is #{RUBY_VERSION} at #{RUBY_PLATFORM}"
+      Xembly.log.info("my version is #{Xembly::VERSION}")
+      Xembly.log.info("Ruby version is #{RUBY_VERSION} at #{RUBY_PLATFORM}")
     end
 
     # Generate XML.
     def xml
       if @opts.xml?
         xml = File.read(@opts[:xml])
-        Xembly.log.info "reading #{@opts[:xml]}"
+        Xembly.log.info("reading #{@opts[:xml]}")
       else
         xml = $stdin.read
-        Xembly.log.info 'reading STDIN'
+        Xembly.log.info('reading STDIN')
       end
       if @opts.dirs?
-        Xembly.log.info "reading directives from #{@opts[:dirs]}"
+        Xembly.log.info("reading directives from #{@opts[:dirs]}")
         dirs = File.read(@opts[:dirs])
       else
-        Xembly.log.info "#{@opts.arguments.length} directives in command line"
+        Xembly.log.info("#{@opts.arguments.length} directives in command line")
         dirs = @opts.arguments.join
       end
       Xembler.new(Directives.new(dirs)).apply(xml).to_xml

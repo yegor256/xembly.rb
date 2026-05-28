@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
 require 'minitest/autorun'
 require 'nokogiri'
-require 'xembly/xembler'
 require 'xembly/directives'
+require 'xembly/xembler'
 require_relative 'test__helper'
 
 # Xembly::Xembler module tests.

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
@@ -12,8 +11,8 @@ module Xembly
     def exec(_, cursor)
       after = []
       cursor.each do |node|
-        Xembly.log.info "node \"#{node.name}\" removed"
-        parent = node.parent
+        Xembly.log.info("node \"#{node.name}\" removed")
+        parent = node.parent # rubocop:disable Elegant/NoRedundantVariable
         node.remove
         after.push(parent)
       end
