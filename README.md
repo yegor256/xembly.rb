@@ -1,4 +1,6 @@
-<img src="https://www.xembly.org/logo.png" width="64px" height="64px" />
+# Xembly Gem
+
+![Xembly logo](https://www.xembly.org/logo.png)
 
 [![DevOps By Rultor.com](https://www.rultor.com/b/yegor256/xembly.rb)](https://www.rultor.com/p/yegor256/xembly.rb)
 [![We recommend RubyMine](https://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
@@ -15,13 +17,13 @@ and check this project: [yegor256/xembly](https://github.com/yegor256/xembly)
 To install, you will need Ruby 2.0+:
 
 ```bash
-$ gem install xembly
+gem install xembly
 ```
 
 Then, run it and read its output:
 
 ```bash
-$ xembly --help
+xembly --help
 ```
 
 Say, you want to modify an existing XML document, which is in the file `doc.xml`:
@@ -35,8 +37,9 @@ Say, you want to modify an existing XML document, which is in the file `doc.xml`
 
 Now, say, you want to add one more book there:
 
-```
-$ xembly --xml doc.xml 'XPATH "/books"; ADD "book"; ATTR "isbn", "0201379430"; SET "Object Design";'
+```bash
+$ xembly --xml doc.xml \
+  'XPATH "/books"; ADD "book"; ATTR "isbn", "0201379430"; SET "Object Design";'
 <books>
   <book isbn="0735619654">Object Thinking</book>
   <book isbn="1519166915">Elegant Objects</book>
@@ -46,5 +49,5 @@ $ xembly --xml doc.xml 'XPATH "/books"; ADD "book"; ATTR "isbn", "0201379430"; S
 
 Simple as that!
 
-The full specification of Xembly language is
-[here](https://github.com/yegor256/xembly).
+The [full specification](https://github.com/yegor256/xembly)
+of Xembly language is available online.
