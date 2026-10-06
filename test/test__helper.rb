@@ -3,9 +3,11 @@
 # SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
+require 'simplecov'
+SimpleCov.start
+
 require 'minitest/autorun'
 require 'nokogiri'
-require 'simplecov'
 require_relative '../lib/xembly'
 
 # Xembly test, parent class.
