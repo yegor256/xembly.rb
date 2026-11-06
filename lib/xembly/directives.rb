@@ -25,8 +25,8 @@ module Xembly
         .map { |t| Directives.map(t.compact) }
     end
 
-    def each(&block)
-      @array.each(&block)
+    def each(&)
+      @array.each(&)
     end
 
     def length
