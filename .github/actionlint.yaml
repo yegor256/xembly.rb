@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: Copyright (c) 2016-2026 Yegor Bugayenko
+# SPDX-License-Identifier: MIT
+---
+# GitHub hosts this image; actionlint's bundled runner list is still older.
+# https://github.com/actions/runner-images#available-images
+self-hosted-runner:
+  labels:
+    - ubuntu-26.04
