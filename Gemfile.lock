@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     xembly (1.0.snapshot)
-      nokogiri (= 1.16.2)
+      nokogiri (= 1.19.7)
       rake (= 13.1.0)
       slop (= 4.10.1)
 
@@ -56,14 +56,14 @@ GEM
     mini_portile2 (2.8.9)
     minitest (5.27.0)
     multi_test (2.0.0)
-    nokogiri (1.16.2)
+    nokogiri (1.19.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.16.2-arm64-darwin)
+    nokogiri (1.19.7-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.2-x64-mingw-ucrt)
+    nokogiri (1.19.7-x64-mingw-ucrt)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-linux)
+    nokogiri (1.19.7-x86_64-linux-gnu)
       racc (~> 1.4)
     parallel (2.3.0)
     parser (3.3.13.0)

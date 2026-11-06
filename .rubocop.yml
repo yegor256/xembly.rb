@@ -8,7 +8,7 @@ AllCops:
     - 'bin/**/*'
     - 'vendor/**/*'
   DisplayCopNames: true
-  TargetRubyVersion: '2.5'
+  TargetRubyVersion: '3.2'
   SuggestExtensions: false
 Metrics/MethodLength:
   Max: 50
