@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md', 'LICENSE.txt']
   s.add_dependency('nokogiri', '1.16.2')
-  s.add_dependency('rake', '13.1.0')
+  s.add_dependency('rake', '13.4.2')
   s.add_dependency('slop', '4.10.1')
   s.metadata['rubygems_mfa_required'] = 'true'
 end
