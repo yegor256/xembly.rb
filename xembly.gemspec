@@ -9,7 +9,7 @@ require 'xembly/version'
 
 Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new('>= 0') if s.respond_to?(:required_rubygems_version=)
-  s.required_ruby_version = '>= 2.5'
+  s.required_ruby_version = '>= 3.2'
   s.name = 'xembly'
   s.version = Xembly::VERSION
   s.license = 'MIT'
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md', 'LICENSE.txt']
-  s.add_dependency('nokogiri', '1.16.2')
+  s.add_dependency('nokogiri', '1.19.7')
   s.add_dependency('rake', '13.4.2')
   s.add_dependency('slop', '4.10.1')
   s.metadata['rubygems_mfa_required'] = 'true'

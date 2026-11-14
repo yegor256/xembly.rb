@@ -14,7 +14,7 @@ Xembly is assembly for XML.
 Read this [blog post](https://www.yegor256.com/2014/04/09/xembly-intro.html)
 and check this project: [yegor256/xembly](https://github.com/yegor256/xembly)
 
-To install, you will need Ruby 2.0+:
+To install, you will need Ruby 3.2+:
 
 ```bash
 gem install xembly
